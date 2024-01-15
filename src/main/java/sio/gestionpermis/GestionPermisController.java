@@ -61,6 +61,10 @@ public class GestionPermisController implements Initializable
         cboEleves.getSelectionModel().selectFirst();
 
 
+        tcNomTest.setCellValueFactory(new PropertyValueFactory<Test,String>("Nom"));
+        tcNbFautes.setCellValueFactory(new PropertyValueFactory<Test,Integer>("Fautes"));
+        tcTermine.setCellValueFactory(new PropertyValueFactory<Test,Boolean>("Terminé"));
+
 
 
         tcNbFautes.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>() {
@@ -82,9 +86,7 @@ public class GestionPermisController implements Initializable
                 {
                     // Remplir le TableView avec les tests de l'élève
                     eleveSelect=(Eleve) cboEleves.getSelectionModel().getSelectedItem();
-                    tcNomTest.setCellValueFactory(new PropertyValueFactory<Test,String>("Nom"));
-                    tcNbFautes.setCellValueFactory(new PropertyValueFactory<Test,Integer>("Fautes"));
-                    tcTermine.setCellValueFactory(new PropertyValueFactory<Test,Boolean>("Terminé"));
+
                     tvTests.setItems(FXCollections.observableArrayList(eleveSelect.getLesTests()));
 
                 }
